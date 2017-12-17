@@ -3,8 +3,14 @@
 Martin O'Hanlon
 
 # 添加生成生物、告示牌...
+請使用raspberryjuice-1.11.jar以上版本
+Entity列表在entity.py中
 
-林聖閔Sam
+新增以下功能:
+- setSign()
+- spawnEntity()
+
+by林聖閔Sam
 
 ## Sources
 

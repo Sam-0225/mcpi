@@ -18,15 +18,7 @@ from .util import flatten
 
     @author: Aron Nieminen, Mojang AB"""
 
-""" Updated to include functionality provided by RaspberryJuice:
-- getBlocks()
-- getDirection()
-- getPitch()
-- getRotation()
-- getPlayerEntityId()
-- pollChatPosts()
-- setSign()
-- spawnEntity()"""
+"""
 
 def intFloor(*args):
     return [int(math.floor(x)) for x in flatten(args)]
