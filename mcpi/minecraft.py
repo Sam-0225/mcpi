@@ -75,6 +75,8 @@ class CmdPositioner:
     def setting(self, setting, status):
         """Set a player setting (setting, status). keys: autojump"""
         self.conn.send(self.pkg + b".setting", setting, 1 if bool(status) else 0)
+    
+
 
 class CmdEntity(CmdPositioner):
     """Methods for entities"""
@@ -156,6 +158,15 @@ class CmdEvents:
         s = self.conn.sendReceive(b"events.chat.posts")
         events = [e for e in s.split("|") if e]
         return [ChatEvent.Post(int(e[:e.find(",")]), e[e.find(",") + 1:]) for e in events]
+
+    def pollProjectileHits(self):
+        """Only triggered by projectiles => [BlockEvent]"""
+        s = self.conn.sendReceive(b"events.projectile.hits")
+        events = [e for e in s.split("|") if e]
+        return [BlockEvent.Hit(*list(map(int, e.split(",")))) for e in events]
+
+
+    
 
 class Minecraft:
     """The main class to interact with a running instance of Minecraft Pi."""
