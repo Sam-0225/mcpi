@@ -16,7 +16,7 @@ from .util import flatten
     (Because of this, it's possible to "erase" arguments. CmdPlayer removes
      entityId, by injecting [] that flattens to nothing)
 
-    @author: Aron Nieminen, Mojang AB"""
+    @author: Aron Nieminen, Mojang AB
 
 """
 
