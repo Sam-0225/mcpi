@@ -1,8 +1,8 @@
 # CodingAPE Minecraft × Python curriculum
-<a href='https://www.codingapeschool.com/'>CodingAPE 猿創力程式設計學校</a>
-[2018猿創力Minecraft程式冬令營-初階](https://www.codingapeschool.com/camp/minecraft)
-[2018猿創力Minecraft程式冬令營-進階](https://www.codingapeschool.com/camp/adv-minecraft)
-[2018猿創力Minecraft程式冬令營 Python](https://www.codingapeschool.com/camp/python/)
+[CodingAPE 猿創力程式設計學校](https://www.codingapeschool.com/)</br>
+[2018猿創力Minecraft程式冬令營-初階](https://www.codingapeschool.com/camp/minecraft)</br>
+[2018猿創力Minecraft程式冬令營-進階](https://www.codingapeschool.com/camp/adv-minecraft)</br>
+[2018猿創力Minecraft程式冬令營 Python](https://www.codingapeschool.com/camp/python/)</br>
 
 ## <a href='https://github.com/TeachCraft/TeachCraft-Examples/tree/master/minecraftstuff'>minecraftstuff</a> library [From Martin O'Hanlon, <a href='https://github.com/martinohanlon/minecraft-stuff'>repo</a>, <a href='http://www.stuffaboutcode.com/p/minecraft.html'>website</a>, <a href='https://www.amazon.com/gp/product/111894691X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=111894691X&linkCode=as2&tag=teachcraft-20&linkId=62f6ef5032275ace368045b4b7535c8f'>book</a>]
 
@@ -697,8 +697,9 @@ turtle.fly()
 
 ## 添加新功能...
 |Author|林聖閔Sam|
-|---|---
-|E-mail|samuel951753@gmail.com
+|---|---|
+|E-mail|samuel951753@gmail.com|
+
 請使用raspberryjuice-1.11.jar以上版本
 api可見minecraft.py檔，有註解說明使用方法
 
