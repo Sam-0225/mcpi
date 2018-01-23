@@ -1,5 +1,8 @@
 # CodingAPE Minecraft × Python curriculum
 <a href='https://www.codingapeschool.com/'>CodingAPE 猿創力程式設計學校</a>
+[2018猿創力Minecraft程式冬令營-初階](https://www.codingapeschool.com/camp/minecraft)
+[2018猿創力Minecraft程式冬令營-進階](https://www.codingapeschool.com/camp/adv-minecraft)
+[2018猿創力Minecraft程式冬令營 Python](https://www.codingapeschool.com/camp/python/)
 
 ## <a href='https://github.com/TeachCraft/TeachCraft-Examples/tree/master/minecraftstuff'>minecraftstuff</a> library [From Martin O'Hanlon, <a href='https://github.com/martinohanlon/minecraft-stuff'>repo</a>, <a href='http://www.stuffaboutcode.com/p/minecraft.html'>website</a>, <a href='https://www.amazon.com/gp/product/111894691X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=111894691X&linkCode=as2&tag=teachcraft-20&linkId=62f6ef5032275ace368045b4b7535c8f'>book</a>]
 
@@ -692,25 +695,32 @@ turtle.fly()
 
 - <a href='http://minecraft-stuff.readthedocs.io/en/latest/minecraftdrawing.html#minecraftdrawing'>Official Documentation</a>
 
-## 添加生成生物、告示牌...
+## 添加新功能...
+|Author|林聖閔Sam|
+|---|---
+|E-mail|samuel951753@gmail.com
 請使用raspberryjuice-1.11.jar以上版本
-
-Entity列表在entity.py中
+api可見minecraft.py檔，有註解說明使用方法
 
 新增以下功能:
-- setSign()
-- spawnEntity()
+- setSign() 生成告示牌，可設定方位、內容及告示牌形式
+- spawnEntity() 生成實體
+- block.py加入ID、名稱對照
 
-by林聖閔Sam
 
-## Licenses
 
-Minecraft: Pi edition LICENSE - [minecraft-pi-edition-LICENSE.txt](https://github.com/martinohanlon/mcpi/blob/master/mcpi/minecraft-pi-edition-LICENSE.txt)
-
-minecraftstuff LICENSE - [minecraft-stuff-LICENSE](https://github.com/martinohanlon/mcpi/blob/master/mcpi/minecraft-stuff-LICENSE)
 
 ## Block IDs
 
 - <a href='http://minecraft-ids.grahamedgecombe.com/'>Website with lookup table</a>
 - <a href='http://www.stuffaboutcode.com/p/minecraft-api-reference.html'>Using a python library</a> [Scroll down to 'Blocks' section]
 - 也可直接在Minecraft中按 F3+H，即可在背包中看見物品ID
+
+## Entity IDs
+- mcpi中的Entity列表.md，含有中文翻譯
+
+## Licenses
+
+Minecraft: Pi edition LICENSE - [minecraft-pi-edition-LICENSE.txt](https://github.com/martinohanlon/mcpi/blob/master/mcpi/minecraft-pi-edition-LICENSE.txt)
+
+minecraftstuff LICENSE - [minecraft-stuff-LICENSE](https://github.com/martinohanlon/mcpi/blob/master/mcpi/minecraft-stuff-LICENSE)
