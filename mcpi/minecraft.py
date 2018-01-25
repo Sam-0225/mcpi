@@ -244,7 +244,7 @@ class Minecraft:
         """Post a message to the game chat"""
         self.conn.send(b"chat.post", msg)
 
-    def postToTitle(self, player, mainTitle, subTitle=None):
+    def postToTitle(self, player, mainTitle, subTitle=" "):
         """Post a message to the game chat"""
         self.conn.send(b"title.post", player , mainTitle , subTitle)
 
