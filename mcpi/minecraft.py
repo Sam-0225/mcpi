@@ -22,6 +22,7 @@ from .util import flatten
 
 def intFloor(*args):
     return [int(math.floor(x)) for x in flatten(args)]
+	
 
 class CmdPositioner:
     """Methods for setting and getting positions"""
