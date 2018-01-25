@@ -243,6 +243,10 @@ class Minecraft:
         """Post a message to the game chat"""
         self.conn.send(b"chat.post", msg)
 
+    def postToTitle(self, player, mainTitle, subTitle=None):
+        """Post a message to the game chat"""
+        self.conn.send(b"title.post", player , mainTitle , subTitle)
+
     def setting(self, setting, status):
         """Set a world setting (setting, status). keys: world_immutable, nametags_visible"""
         self.conn.send(b"world.setting", setting, 1 if bool(status) else 0)
