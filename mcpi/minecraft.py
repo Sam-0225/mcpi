@@ -245,7 +245,7 @@ class Minecraft:
         self.conn.send(b"chat.post", msg)
 
     def postToTitle(self, player, mainTitle, subTitle=" "):
-        """Post a message to the game chat"""
+        """Post a message to the player title"""
         self.conn.send(b"title.post", player , mainTitle , subTitle)
 
     def setting(self, setting, status):
@@ -257,6 +257,10 @@ class Minecraft:
         s = self.conn.sendReceive(b"world.getEntityTypes")
         types = [t for t in s.split("|") if t]
         return [Entity(int(e[:e.find(",")]), e[e.find(",") + 1:]) for e in types]
+		
+    def executeCommand(self ,command):
+        """execute a command with console"""
+        self.conn.send(b"world.executeCommand", command)
 
 
     @staticmethod
