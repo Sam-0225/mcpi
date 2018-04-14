@@ -261,6 +261,10 @@ class Minecraft:
     def executeCommand(self ,command):
         """execute a command with console"""
         self.conn.send(b"world.executeCommand", command)
+        
+    def createExplosion(self,x ,y ,z ,power=4):
+        self.conn.send(b"world.createExplosin",x,y,z,power)
+        """create an explosion like TNT (x,y,z,power[float],damageBlock[boolean])"""
 
 
     @staticmethod
