@@ -696,7 +696,7 @@ turtle.fly()
 - <a href='http://minecraft-stuff.readthedocs.io/en/latest/minecraftdrawing.html#minecraftdrawing'>Official Documentation</a>
 
 ## 添加新功能...
-|Author|林聖閔Sam|
+|Author|Sam|
 |---|---|
 |E-mail|samuel951753@gmail.com|
 
