@@ -118,6 +118,21 @@ class CmdPlayer(CmdPositioner):
     def getPitch(self):
         return CmdPositioner.getPitch(self, [])
 
+    def getFoodLevel(self) -> int:
+        return self.conn.sendReceive(self.pkg + b".getFoodLevel", [])
+
+    def setFoodLevel(self, foodLevel: int) -> None:
+        self.conn.send(self.pkg + b".setFoodLevel", foodLevel)
+
+    def getHealth(self) -> float:
+        return self.conn.sendReceive(self.pkg + b".getHealth", [])
+
+    def setHealth(self, health: float) -> None:
+        self.conn.send(self.pkg + b".setHealth", [], health)
+
+    def sendTitle(self, title: str, subTitle: str = "", fadeIn: int = 10, stay: int = 70, fadeOut: int = 20) -> None:
+        self.conn.send(self.pkg + b".sendTitle", id, title, subTitle, fadeIn, stay, fadeOut)
+
 class CmdCamera:
     def __init__(self, connection):
         self.conn = connection
@@ -201,19 +216,70 @@ class Minecraft:
         """Set a cuboid of blocks (x0,y0,z0,x1,y1,z1,id,[data])"""
         self.conn.send(b"world.setBlocks", intFloor(args))
 
-    def setSign(self, *args):
+    def setSign(self, x:int, y:int, z:int, signType:str, signDir:int, line1:str="", line2:str="", line3:str="", line4:str="") -> None:
         """Set a sign (x,y,z,id,data,[line1,line2,line3,line4])
         
         Wall signs (id=68) require data for facing direction 2=north, 3=south, 4=west, 5=east
         Standing signs (id=63) require data for facing rotation (0-15) 0=south, 4=west, 8=north, 12=east
         @author: Tim Cummings https://www.triptera.com.au/wordpress/"""
-        lines = []
-        flatargs = []
-        for arg in flatten(args):
-            flatargs.append(arg)
-        for flatarg in flatargs[5:]:
-            lines.append(flatarg.replace(",",";").replace(")","]").replace("(","["))
-        self.conn.send(b"world.setSign",intFloor(flatargs[0:5]) + lines)
+        minecraftSignsType = ["SPRUCE_SIGN", "ACACIA_SIGN", "BIRCH_SIGN", "DARK_OAK_SIGN", "JUNGLE_SIGN", "OAK_SIGN"]
+
+        # ["SPRUCE_WALL_SIGN","ACACIA_WALL_SIGN","BIRCH_WALL_SIGN","DARK_OAK_WALL_SIGN","JUNGLE_WALL_SIGN","OAK_WALL_SIGN"]
+        minecraftSignsDir = {0: 'SOUTH',
+                             1: 'SOUTH_SOUTH_WEST',
+                             2: 'SOUTH_WEST',
+                             3: 'WEST_SOUTH_WEST',
+                             4: 'WEST',
+                             5: 'WEST_NORTH_WEST',
+                             6: 'NORTH_WEST',
+                             7: 'NORTH_NORTH_WEST',
+                             8: 'NORTH',
+                             9: 'NORTH_NORTH_EAST',
+                             10: 'NORTH_EAST',
+                             11: 'EAST_NORTH_EAST',
+                             12: 'EAST',
+                             13: 'EAST_SOUTH_EAST',
+                             14: 'SOUTH_EAST',
+                             15: 'SOUTH_SOUTH_EAST'
+                             }
+
+        if type(signDir) == int:
+            if 0 <= signDir < 16:
+                signDir = minecraftSignsDir.get(signDir)
+        elif type(signDir) == str:
+            for k, v in minecraftSignsDir.items():
+                if signDir == v:
+                    break
+            else:
+                signDir = minecraftSignsDir.get(0)
+
+        signType = signType.upper()
+        if signType not in minecraftSignsType: raise Exception("Sign name error")
+        self.conn.send(b"world.setSign", x, y, z, signType, signDir, line1, line2, line3, line4)
+
+    def setWallSign(self, x: int, y: int, z: int, signType: str, signDir: int, line1="", line2="", line3="",
+                    line4="") -> None:
+        minecraftSignsType = ["SPRUCE_WALL_SIGN", "ACACIA_WALL_SIGN", "BIRCH_WALL_SIGN", "DARK_OAK_WALL_SIGN",
+                              "JUNGLE_WALL_SIGN", "OAK_WALL_SIGN"]
+
+        minecraftSignsDir = {0: 'SOUTH',
+                             1: 'WEST',
+                             2: 'NORTH',
+                             3: 'EAST'}
+
+        if type(signDir) == int:
+            if 0 <= signDir < 4:
+                signDir = minecraftSignsDir.get(signDir)
+        elif type(signDir) == str:
+            for k, v in minecraftSignsDir.items():
+                if signDir == v:
+                    break
+            else:
+                signDir = minecraftSignsDir.get(0)
+
+        signType = signType.upper()
+        if signType not in minecraftSignsType: raise Exception("Sign name error")
+        self.conn.send(b"world.setWallSign", x, y, z, signType, signDir, line1, line2, line3, line4)
 
     def spawnEntity(self, *args):
         """Spawn entity (x,y,z,id,[data])"""
